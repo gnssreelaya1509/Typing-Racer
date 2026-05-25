@@ -29,10 +29,10 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Use hash strategy to fix pathing issues on GitHub Pages
-          # . tells flet to build the current directory
-          # --yes skips the interactive Flutter SDK installation prompt
-          flet build web . --yes --route-url-strategy hash
+          # --base-href: Tells the app that its files are located inside /Typing-Racer/
+          # --route-url-strategy hash: Ensures the Flet router works inside a sub-path
+          # --yes: Automatically proceeds with Flutter SDK installation
+          flet build web . --base-href /Typing-Racer/ --yes --route-url-strategy hash
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
