@@ -29,8 +29,8 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Builds the web application using your main.py file
-          flet build web main.py --base-href /${{ github.event.repository.name }}/
+          # Simplified build command compatible with the latest Flet CLI
+          flet build web main.py
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
