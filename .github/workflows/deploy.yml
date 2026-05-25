@@ -29,10 +29,15 @@ jobs:
 
       - name: Build Web App
         run: |
-          # --base-href: Tells the app that its files are located inside /Typing-Racer/
-          # --route-url-strategy hash: Ensures the Flet router works inside a sub-path
-          # --yes: Automatically proceeds with Flutter SDK installation
-          flet build web . --base-href /Typing-Racer/ --yes --route-url-strategy hash
+          # Build using the simplest command possible to avoid CLI errors
+          flet build web . --yes
+
+      - name: Fix Pathing for GitHub Pages
+        run: |
+          # Manually update index.html to use the /Typing-Racer/ sub-path
+          sed -i 's|href="/"|href="/Typing-Racer/"|g' build/web/index.html
+          sed -i 's|src="flutter|src="/Typing-Racer/flutter|g' build/web/index.html
+          sed -i 's|href="flutter|href="/Typing-Racer/flutter|g' build/web/index.html
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
