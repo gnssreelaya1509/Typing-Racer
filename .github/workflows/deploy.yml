@@ -29,8 +29,8 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Simplified build command compatible with the latest Flet CLI
-          flet build web main.py
+          # The --yes flag automatically accepts the Flutter SDK installation prompt
+          flet build web main.py --yes
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
