@@ -28,7 +28,6 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Flet builds static web files
           flet build web --base-href /${{ github.event.repository.name }}/
 
       - name: Deploy to GitHub Pages
