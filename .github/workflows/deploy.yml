@@ -29,8 +29,8 @@ jobs:
 
       - name: Build Web App
         run: |
-          # The --yes flag automatically accepts the Flutter SDK installation prompt
-          flet build web main.py --yes
+          # Use '.' to tell Flet to look in the current folder for the main application file
+          flet build web . --yes
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
