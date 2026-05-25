@@ -29,8 +29,10 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Flet builds to the 'build/web' folder
-          flet build web . --yes
+          # Use hash strategy to fix pathing issues on GitHub Pages
+          # . tells flet to build the current directory
+          # --yes skips the interactive Flutter SDK installation prompt
+          flet build web . --yes --route-url-strategy hash
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
