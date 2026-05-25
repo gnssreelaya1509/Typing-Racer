@@ -29,10 +29,13 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Use '.' to tell Flet to look in the current folder for the main application file
+          # Flet builds to the 'build/web' folder
           flet build web . --yes
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build/web'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-        with:
-          artifact_path: 'build/web'
